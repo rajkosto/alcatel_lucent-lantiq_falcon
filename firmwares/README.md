@@ -1,6 +1,11 @@
 To flash these firmwares on your G-010S-P stick, you must first upload them via SCP to the stick's /tmp folder like so:
 
-`scp -oKexAlgorithms=+diffie-hellman-group1-sha1 firmware.img ONTUSER@192.168.1.1:/tmp/firmware.img`
+`scp -O -oKexAlgorithms=+diffie-hellman-group1-sha1 firmware.img ONTUSER@192.168.1.1:/tmp/firmware.img`
+
+If you are on Windows, you can use WinSCP to drag the file to the /tmp folder (just make sure you set the "File protocol:" combobox at the top to SCP instead of SFTP or you will get an error that the SFTP server is missing),
+or you can use a commandline utility from PuTTY like so:
+
+`pscp.exe -scp -oKexAlgorithms=+diffie-hellman-group1-sha1 firmware.img ONTUSER@192.168.1.1:/tmp/firmware.img`
 
 Then verify the md5sum of the file on the stick matches what you uploaded with `md5sum /tmp/firmware.img`
 
